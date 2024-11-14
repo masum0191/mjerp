@@ -6,7 +6,7 @@ trait AutoUpdateTrait{
     protected function isServerConnectionOk()
     {
         $ch = curl_init(config('auto_update.demo_url').'/fetch-data-general');
-        // $ch = curl_init("https://jsonplaceholder.typicode.com/todos");
+       // $ch = curl_init("https://jsonplaceholder.typicode.com/todos");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_TIMEOUT, 10); // Set the timeout to 10 seconds

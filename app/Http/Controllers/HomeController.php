@@ -67,6 +67,7 @@ class HomeController extends Controller
 
     public function dashboard()
     {
+       // return 1;
         //code for smscloud
         /*$headers = array(
             "Authorization: Bearer kRHXREZr1SmBu32lSZ26GB6VlyKhjWLpDOB",
@@ -117,6 +118,7 @@ class HomeController extends Controller
 
         if(Auth::user()->role_id > 2 && cache()->get('general_setting')->staff_access == 'own')
         {
+            return 1;
             $product_sale_data = Sale::join('product_sales', 'sales.id','=', 'product_sales.sale_id')
                 ->select(DB::raw('product_sales.product_id, product_sales.product_batch_id, product_sales.sale_unit_id, sum(product_sales.qty) as sold_qty, sum(product_sales.return_qty) as return_qty, sum(product_sales.total) as sold_amount'))
                 ->where('sales.user_id', Auth::id())
@@ -208,15 +210,15 @@ class HomeController extends Controller
         config()->set('database.connections.mysql.strict', true);
         DB::reconnect();
         //fetching data for auto updates
-        if(!config('database.connections.saleprosaas_landlord') && Auth::user()->role_id <= 2 && isset($_COOKIE['login_now']) && $_COOKIE['login_now']) {
-            $autoUpdateData = $this->general();
-            $alertBugEnable =  $autoUpdateData['alertBugEnable'];
-            $alertVersionUpgradeEnable = $autoUpdateData['alertVersionUpgradeEnable'];
-        }
-        else {
-            $autoUpdateData = $alertBugEnable = $alertVersionUpgradeEnable = '';
-        }
-        return view('backend.index', compact('revenue', 'purchase', 'expense', 'return', 'purchase_return', 'profit', 'payment_recieved', 'payment_sent', 'month', 'yearly_sale_amount', 'yearly_purchase_amount', 'alertBugEnable','alertVersionUpgradeEnable'));
+        // if(!config('database.connections.saleprosaas_landlord') && Auth::user()->role_id <= 2 && isset($_COOKIE['login_now']) && $_COOKIE['login_now']) {
+        //     $autoUpdateData = $this->general();
+        //     $alertBugEnable =  $autoUpdateData['alertBugEnable'];
+        //     $alertVersionUpgradeEnable = $autoUpdateData['alertVersionUpgradeEnable'];
+        // }
+        // else {
+        //     $autoUpdateData = $alertBugEnable = $alertVersionUpgradeEnable = '';
+        // }
+        return view('backend.index', compact('revenue', 'purchase', 'expense', 'return', 'purchase_return', 'profit', 'payment_recieved', 'payment_sent', 'month', 'yearly_sale_amount', 'yearly_purchase_amount'));
     }
 
     public function yearlyBestSellingPrice()
