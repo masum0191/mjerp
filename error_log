@@ -1,0 +1,1 @@
+[12-Sep-2024 04:18:59 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.2.0". You are running 8.1.27. in /home/mentarijannah/public_html/vendor/composer/platform_check.php on line 28
